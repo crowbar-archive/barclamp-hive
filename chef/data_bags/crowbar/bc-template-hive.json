@@ -1,0 +1,46 @@
+{
+  "id": "bc-template-hive",
+  "description": "Installs and configures the baseline hive cluster component",
+  "attributes": {
+    "hive": {
+      "debug": true,
+	  "admin_ip_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").address",
+      "admin_interface_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").interface",
+      "hive_default_fileformat": "TextFile",
+      "hive_exec_compress_intermediate": "false",
+      "hive_exec_compress_output": "false",
+      "hive_exec_scratchdir": "/tmp/hive-${user.name}",
+      "hive_exec_script_maxerrsize": "100000",
+      "hive_join_emit_interval": "1000",
+      "hive_map_aggr": "false",
+      "hive_metastore_connect_retries": "5",
+      "hive_metastore_local": "true",
+      "hive_metastore_metadb_dir": "file:///var/metastore/metadb/",
+      "hive_metastore_rawstore_impl": "org.apache.hive.hive.metastore.ObjectStore",
+      "hive_metastore_uris": "file:///var/metastore/metadb/",
+      "hive_metastore_warehouse_dir": "/user/hive/warehouse",
+      "javax_jdo_option_ConnectionDriverName": "org.apache.derby.jdbc.EmbeddedDriver",
+      "javax_jdo_option_ConnectionURL": "jdbc:derby:;databaseName=metastore_db;create=true"
+    }
+  },
+  "deployment": {
+    "hive": {
+      "crowbar-revision": 0,
+      "elements": {},
+      "element_order": [
+        [
+         "hive-interpreter"
+        ]
+      ],
+      "config": {
+        "environment": "hive-base-config",
+        "mode": "full",
+        "transitions": true,
+        "transition_list": [
+          "installed"
+        ]
+      } 
+    }
+  }
+}
+

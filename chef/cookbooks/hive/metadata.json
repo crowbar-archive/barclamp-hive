@@ -1,0 +1,30 @@
+{
+  "description": "Installs and configures the hive cluster component",
+  "recipes": {
+    "hive::default": "Installs hive base libraries and configuration."
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "version": "1.0",
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "name": "hive",
+  "providing": {
+  },
+  "attributes": {
+  },
+  "maintainer": "",
+  "replacing": {
+  },
+  "license": "All rights reserved",
+  "maintainer_email": "",
+  "groupings": {
+  },
+  "dependencies": {
+  },
+  "platforms": {
+  },
+  "recommendations": {
+  }
+}
