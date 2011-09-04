@@ -38,7 +38,8 @@ default[:hive][:hive_exec_compress_intermediate] = "false"
 default[:hive][:hive_exec_compress_output] = "false"
 
 # Scratch space for Hive jobs.
-default[:hive][:hive_exec_scratchdir] = "/tmp/hive-${user.name}"
+# DEFAULT: /tmp/hive-${user.name}
+default[:hive][:hive_exec_scratchdir] = "/tmp/hive-crowbar"
 
 # Maximum number of bytes a script is allowed to emit to standard error
 # (per map-reduce task). This prevents runaway scripts from filling logs
