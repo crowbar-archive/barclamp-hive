@@ -27,6 +27,38 @@ class HiveService < ServiceObject
   def create_proposal
     @logger.debug("hive create_proposal: entering")
     base = super
+    
+    # Get the node list, exclude the admin node.
+    debug = true
+    edge_nodes = Array.new
+    nodes = NodeObject.all
+    nodes.delete_if { |n| n.nil? or n.admin? }
+
+=begin    
+The code below doesn't work - can't use :node
+    # Configuration filter for our environment
+    env_filter = " AND environment:#{node[:hive][:config][:environment]}"
+    
+    # Find all edge nodes and attach the hive proposal to
+    # those nodes. You need to have a Hadoop base edgenode
+    # already or the proposal bind will fail.
+    search(:node, "roles:hadoop-edgenode#{env_filter}") do |edge|
+      if !edge[:fqdn].nil? && !edge[:fqdn].empty?
+        Chef::Log.info("hive create_proposal: ADD EDGE_NODE [#{edge[:fqdn]}") if debug
+        edge_nodes << nedge[:fqdn] 
+      end
+    end
+=end
+    
+    # Check for errors or add the proposal elements
+    base["deployment"]["hive"]["elements"] = { } 
+    if edge_nodes.length == 0
+      Chef::Log.info("hive create_proposal: No edge nodes found, proposal bind skipped")
+    else
+      base["deployment"]["hive"]["elements"]["hive-interpreter"] = edge_nodes 
+    end
+    
+    # @logger.debug("hive create_proposal: #{base.to_json}")
     @logger.debug("hive create_proposal: exiting")
     base
   end
