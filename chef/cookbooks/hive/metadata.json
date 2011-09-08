@@ -1,5 +1,5 @@
 {
-  "description": "Installs and configures the Hadoop Hive cluster component",
+  "description": "A data warehouse infrastructure that provides SQL based data summarization and ad hoc querying.",
   "recipes": {
     "hive::default": "Installs hive base libraries and configuration."
   },
