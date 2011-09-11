@@ -28,8 +28,7 @@
     <name>hive.default.fileformat</name>
     <value><%= node[:hive][:hive_default_fileformat] %></value>
     <description>Default file format for CREATE TABLE statement. Options are TextFile
-      and SequenceFile. Users can explicitly say CREATE TABLE ...
-      STORED AS <TEXTFILE.
+      and SequenceFile. 
     </description>
   </property>
 
@@ -39,7 +38,7 @@
     <description>This controls whether intermediate files produced by hive between
       multiple map-reduce jobs are compressed. The compression codec
       and other options are determined from hadoop config variables
-      mapred.output.compress*.
+      mapred.output.compress.
     </description>
   </property>
 
@@ -49,7 +48,7 @@
     <description>This controls whether the final outputs of a query (to a local/hdfs
       file or a hive table) is compressed. The compression codec and
       other options are determined from hadoop config variables
-      mapred.output.compress*.
+      mapred.output.compress.
     </description>
   </property>
 
@@ -146,4 +145,3 @@
   </property>
 
 </configuration>
-

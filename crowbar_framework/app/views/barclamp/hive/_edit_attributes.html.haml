@@ -1,7 +1,7 @@
 
 %input#proposal_attributes{:type => "hidden", :name => "proposal_attributes", :value => @proposal.raw_data['attributes'][@proposal.barclamp].to_json}
 %p
-  %strong= t('.core_attributes')
+  %label{:for => "proposal_attributes"}= t('.attributes')
   = link_to "Raw", proposal_barclamp_path(:id => @proposal.name, :controller => @proposal.barclamp, :dep_raw => @dep_raw, :attr_raw => true), :style => "float: right;"
   %div.container
 
@@ -11,11 +11,11 @@
 
     %p
       %label{ :for => :hive_exec_compress_intermediate }= t('.hive_exec_compress_intermediate')
-      = select_tag :hive_exec_compress_intermediate, options_for_select([['true','true'], ['false', 'false']], "false"), :onchange => "update_value('hive_exec_compress_intermediate', 'hive_exec_compress_intermediate', 'boolean')"
+      = select_tag :hive_exec_compress_intermediate, options_for_select([["true","true"], ["false", "false"]], @proposal.raw_data['attributes'][@proposal.barclamp]["hive_exec_compress_intermediate"]), :onchange => "update_value('hive_exec_compress_intermediate', 'hive_exec_compress_intermediate', 'string')"
 
     %p
       %label{ :for => :hive_exec_compress_output }= t('.hive_exec_compress_output')
-      = select_tag :hive_exec_compress_output, options_for_select([['true','true'], ['false', 'false']], "false"), :onchange => "update_value('hive_exec_compress_output', 'hive_exec_compress_output', 'boolean')"
+      = select_tag :hive_exec_compress_output, options_for_select([["true","true"], ["false", "false"]], @proposal.raw_data['attributes'][@proposal.barclamp]["hive_exec_compress_output"]), :onchange => "update_value('hive_exec_compress_output', 'hive_exec_compress_output', 'string')"
 
     %p
       %label{ :for => :hive_exec_scratchdir }= t('.hive_exec_scratchdir')
@@ -31,7 +31,7 @@
 
     %p
       %label{ :for => :hive_map_aggr }= t('.hive_map_aggr')
-      = select_tag :hive_map_aggr, options_for_select([['true','true'], ['false', 'false']], "false"), :onchange => "update_value('hive_map_aggr', 'hive_map_aggr', 'boolean')"
+      = select_tag :hive_map_aggr, options_for_select([["true","true"], ["false", "false"]], @proposal.raw_data['attributes'][@proposal.barclamp]["hive_map_aggr"]), :onchange => "update_value('hive_map_aggr', 'hive_map_aggr', 'string')"
 
     %p
       %label{ :for => :hive_metastore_connect_retries }= t('.hive_metastore_connect_retries')
@@ -39,7 +39,7 @@
 
     %p
       %label{ :for => :hive_metastore_local }= t('.hive_metastore_local')
-      = select_tag :hive_metastore_local, options_for_select([['true','true'], ['false', 'false']], "true"), :onchange => "update_value('hive_metastore_local', 'hive_metastore_local', 'boolean')"
+      = select_tag :hive_metastore_local, options_for_select([["true","true"], ["false", "false"]], @proposal.raw_data['attributes'][@proposal.barclamp]["hive_metastore_local"]), :onchange => "update_value('hive_metastore_local', 'hive_metastore_local', 'string')"
 
     %p
       %label{ :for => :hive_metastore_metadb_dir }= t('.hive_metastore_metadb_dir')

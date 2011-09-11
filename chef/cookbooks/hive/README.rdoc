@@ -1,6 +1,6 @@
 = DESCRIPTION:
 
-A data warehouse infrastructure that provides SQL based data summarization and
+Data warehouse infrastructure that provides SQL based data summarization and
 ad hoc querying.
 
 = REQUIREMENTS:

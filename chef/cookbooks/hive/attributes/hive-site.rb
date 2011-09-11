@@ -18,23 +18,22 @@
 #
 
 #######################################################################
-# Site Specific HIVE settings (/etc/hadoop/conf/hive-site.xml).
+# Site Specific HIVE settings (/etc/hive/conf/hive-site.xml).
 #######################################################################
 
 # Default file format for CREATE TABLE statement. Options are TextFile and
-# SequenceFile. Users can explicitly say CREATE TABLE ... STORED AS
-# <TEXTFILE.
+# SequenceFile.
 default[:hive][:hive_default_fileformat] = "TextFile"
 
 # This controls whether intermediate files produced by hive between
 # multiple map-reduce jobs are compressed. The compression codec and other
 # options are determined from hadoop config variables
-# mapred.output.compress*.
+# mapred.output.compress.
 default[:hive][:hive_exec_compress_intermediate] = "false"
 
 # This controls whether the final outputs of a query (to a local/hdfs file
 # or a hive table) is compressed. The compression codec and other options
-# are determined from hadoop config variables mapred.output.compress*.
+# are determined from hadoop config variables mapred.output.compress.
 default[:hive][:hive_exec_compress_output] = "false"
 
 # Scratch space for Hive jobs.
