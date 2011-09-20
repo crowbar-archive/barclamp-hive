@@ -47,3 +47,7 @@ locale_additions:
           javax_jdo_option_ConnectionURL: Javax JDO Option Connection URL
         edit_deployment: 
           deployment: Deployment
+
+rpms:
+  pkgs:
+    - hadoop-hive
