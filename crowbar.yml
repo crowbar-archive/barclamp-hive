@@ -19,6 +19,8 @@ barclamp:
   name: hive
   display: hive
   version: 0
+  requires:
+    - hadoop
 
 crowbar:
   layout: 1
