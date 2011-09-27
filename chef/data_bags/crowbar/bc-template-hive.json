@@ -16,7 +16,7 @@
       "hive_metastore_connect_retries": "5",
       "hive_metastore_local": "true",
       "hive_metastore_metadb_dir": "file:///var/metastore/metadb/",
-      "hive_metastore_rawstore_impl": "org.apache.hive.hive.metastore.ObjectStore",
+      "hive_metastore_rawstore_impl": "org.apache.hadoop.hive.metastore.ObjectStore",
       "hive_metastore_uris": "file:///var/metastore/metadb/",
       "hive_metastore_warehouse_dir": "/user/hive/warehouse",
       "javax_jdo_option_ConnectionDriverName": "org.apache.derby.jdbc.EmbeddedDriver",
