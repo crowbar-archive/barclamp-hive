@@ -26,6 +26,9 @@
   "deployment": {
     "hive": {
       "crowbar-revision": 0,
+      "element_states": {
+        "hive-interpreter": [ "readying", "ready", "applying" ]
+      },
       "elements": {},
       "element_order": [
         [
