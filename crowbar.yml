@@ -53,14 +53,3 @@ locale_additions:
           javax_jdo_option_ConnectionURL: Javax JDO Option Connection URL
         edit_deployment: 
           deployment: Deployment
-
-rpms:
-  redhat-6.2:
-    repos:
-      - bare cloudera-cdh4 10 http://archive.cloudera.com/cdh4/redhat/6/x86_64/cdh/4
-  centos-6.2:
-    repos:
-      - bare cloudera-cdh4 10 http://archive.cloudera.com/cdh4/redhat/6/x86_64/cdh/4
-
-  pkgs:
-    - hadoop-hive
