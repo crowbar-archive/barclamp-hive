@@ -4,8 +4,8 @@
   "attributes": {
     "hive": {
       "debug": true,
-	  "admin_ip_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").address",
-      "admin_interface_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").interface",
+	  "admin_ip_eval": "node.address.addr",
+      "admin_interface_eval": "node.interface.name",
       "hive_default_fileformat": "TextFile",
       "hive_exec_compress_intermediate": "false",
       "hive_exec_compress_output": "false",
