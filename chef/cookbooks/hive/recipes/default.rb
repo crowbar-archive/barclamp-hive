@@ -25,7 +25,7 @@
 debug = node[:hive][:debug]
 Chef::Log.info("BEGIN hive") if debug
 
-package "hadoop-hive" do
+package "hive" do
   action :install
 end
 
