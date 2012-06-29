@@ -20,7 +20,7 @@
       "hive_metastore_uris": "file:///var/metastore/metadb/",
       "hive_metastore_warehouse_dir": "/user/hive/warehouse",
       "javax_jdo_option_ConnectionDriverName": "org.apache.derby.jdbc.EmbeddedDriver",
-      "javax_jdo_option_ConnectionURL": "jdbc:derby:;databaseName=metastore_db;create=true"
+      "javax_jdo_option_ConnectionURL": "/var/metastore/metadb"
     }
   },
   "deployment": {

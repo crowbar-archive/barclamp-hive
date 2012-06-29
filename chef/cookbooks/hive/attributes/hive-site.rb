@@ -80,4 +80,4 @@ default[:hive][:hive_metastore_warehouse_dir] = "/user/hive/warehouse"
 default[:hive][:javax_jdo_option_ConnectionDriverName] = "org.apache.derby.jdbc.EmbeddedDriver"
 
 # JDBC connect string for a JDBC metastore.
-default[:hive][:javax_jdo_option_ConnectionURL] = "jdbc:derby:;databaseName=metastore_db;create=true"
+default[:hive][:javax_jdo_option_ConnectionURL] = "/var/metastore/metadb"

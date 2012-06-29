@@ -29,12 +29,22 @@ package "hive" do
   action :install
 end
 
+service "hiveserver" do
+  supports :start => true, :stop => true, :status => true, :restart => true
+  action :enable
+end
+
 # Setup the hive config file.
 template "/etc/hive/conf/hive-site.xml" do
   owner node[:hive][:process_file_system_owner]
   group node[:hive][:global_file_system_group]
   mode "0644"
   source "hive-site.xml.erb"
+  notifies :restart, resources(:service => "hiveserver")
+end
+
+service "hiveserver" do
+  action  :start
 end
 
 #######################################################################
