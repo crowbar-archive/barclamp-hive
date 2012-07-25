@@ -1,0 +1,36 @@
+# Copyright 2012, Dell, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+en:
+  barclamp:
+    hive:
+      edit_attributes:
+        attributes: Attributes
+        hive_default_fileformat: Default File Format
+        hive_exec_compress_intermediate: Execution Compress Intermediate
+        hive_exec_compress_output: Execution Compress Output
+        hive_exec_scratchdir: Execution Scratch Directory
+        hive_exec_script_maxerrsize: Execute Script Max Error Size
+        hive_join_emit_interval: Join Emit Interval
+        hive_map_aggr: Map Aggregation
+        hive_metastore_connect_retries: Metastore Connect Retries
+        hive_metastore_local: Metastore Local
+        hive_metastore_metadb_dir: Metastore Meta DB Directory
+        hive_metastore_rawstore_impl: Metastore Raw Store Implict
+        hive_metastore_uris: Metastore URIS
+        hive_metastore_warehouse_dir: Metastore Warehouse Directory
+        javax_jdo_option_ConnectionDriverName: Javax JDO Option Connection Driver Name
+        javax_jdo_option_ConnectionURL: Javax JDO Option Connection URL
+      edit_deployment: 
+        deployment: Deployment
