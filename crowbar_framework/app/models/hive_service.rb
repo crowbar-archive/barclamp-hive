@@ -21,9 +21,9 @@
 
 class HiveService < ServiceObject
   
-  def create_proposal
+  def create_proposal(name)
     @logger.debug("hive create_proposal: entering")
-    base = super
+    base = super(name)
     
     # Find all hadoop edge nodes.
     edge_nodes = []
