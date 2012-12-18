@@ -4,6 +4,18 @@
   %label{:for => "proposal_attributes"}= t('.attributes')
   = link_to "Raw", proposal_barclamp_path(:id => @proposal.name, :controller => @proposal.barclamp, :dep_raw => @dep_raw, :attr_raw => true), :style => "float: right;"
   %div.container
+ 
+    %p
+    %br
+    %strong= t('.barclamp_settings')
+
+    %p
+      %label{ :for => :debug }= t('.debug')
+      = select_tag :debug, options_for_select([['false', false],['true', true]], @proposal.raw_data['attributes'][@proposal.barclamp]["debug"]), :onchange => "update_value('debug', 'debug', 'boolean')"
+
+    %p
+    %br
+    %strong= t('.hive_settings')
 
     %p
       %label{ :for => :hive_default_fileformat }= t('.hive_default_fileformat')
