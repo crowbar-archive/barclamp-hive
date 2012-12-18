@@ -16,20 +16,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Author: Paul Webster
-#
 
 #######################################################################
-# Begin recipe transactions
+# Begin recipe
 #######################################################################
 debug = node[:hive][:debug]
 Chef::Log.info("BEGIN hive") if debug
 
-package "hive" do
-  action :install
+hive_packages=%w{
+  hive
+  hive-metastore
+  hive-server
+  hive-server2
+}
+
+hive_packages.each do |pkg|
+  package pkg do
+    action :install
+  end
 end
 
-service "hiveserver" do
+service "hive-server" do
   supports :start => true, :stop => true, :status => true, :restart => true
   action :enable
 end
@@ -40,14 +47,14 @@ template "/etc/hive/conf/hive-site.xml" do
   group node[:hive][:global_file_system_group]
   mode "0644"
   source "hive-site.xml.erb"
-  notifies :restart, resources(:service => "hiveserver")
+  notifies :restart, resources(:service => "hive-server")
 end
 
-service "hiveserver" do
+service "hive-server" do
   action  :start
 end
 
 #######################################################################
-# End of recipe transactions
+# End of recipe
 #######################################################################
 Chef::Log.info("END hive") if debug
