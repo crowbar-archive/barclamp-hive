@@ -3,7 +3,7 @@
   "description": "Data warehouse infrastructure that provides SQL based data summarization and ad hoc querying.",
   "attributes": {
     "hive": {
-      "debug": true,
+      "debug": false,
 	  "admin_ip_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").address",
       "admin_interface_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").interface",
       "hive_default_fileformat": "TextFile",
