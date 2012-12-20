@@ -16,8 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Author: Paul Webster
-#
 
 class HiveService < ServiceObject
   
@@ -36,24 +34,23 @@ class HiveService < ServiceObject
     
     # Find all hadoop edge nodes.
     edge_nodes = nodes.find_all { |n| n.role? "hadoop-edgenode" or n.role? "clouderamanager-edgenode" }
-    edge_fqdns = Array.new
+    edge_fqdns = []
     edge_nodes.each { |x|
       next if x.nil?
-      edge_fqdns << x[:fqdn] if !x[:fqdn].nil? && !x[:fqdn].empty? 
+      edge_fqdns << x[:fqdn] if x[:fqdn] && !x[:fqdn].empty? 
     }
     
-    # Check for errors or add the proposal elements
-    base["deployment"]["hive"]["elements"] = { } 
-    if !edge_fqdns.nil? && edge_fqdns.length > 0 
+    # Add proposal elements.
+    base["deployment"]["hive"]["elements"] = {} 
+    if edge_fqdns && edge_fqdns.length > 0 
       # @logger.info("GOT EDGE " + edge_fqdns.to_s)
       base["deployment"]["hive"]["elements"]["hive-interpreter"] = edge_fqdns 
     else
-      @logger.debug("hive create_proposal: No edge nodes found, proposal bind failed")
+      @logger.debug("hive create_proposal: No edge nodes found")
     end
     
     # @logger.debug("hive create_proposal: #{base.to_json}")
     @logger.debug("hive create_proposal: exiting")
     base
   end
-  
 end
