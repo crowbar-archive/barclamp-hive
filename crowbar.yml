@@ -39,6 +39,7 @@ locale_additions:
           barclamp_settings: Barclamp
           debug: Log Debug Messages
           hive_settings: Hive
+          hive_metastore_mode: Metastore Deployment
           hive_default_fileformat: Default File Format
           hive_exec_compress_intermediate: Execution Compress Intermediate
           hive_exec_compress_output: Execution Compress Output

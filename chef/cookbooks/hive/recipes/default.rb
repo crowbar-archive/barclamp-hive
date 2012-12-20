@@ -23,6 +23,7 @@
 debug = node[:hive][:debug]
 Chef::Log.info("BEGIN hive") if debug
 
+# Install the hive packages.
 hive_packages=%w{
   hive
   hive-metastore
@@ -36,12 +37,13 @@ hive_packages.each do |pkg|
   end
 end
 
+# Define the hive server process.
 service "hive-server" do
   supports :start => true, :stop => true, :status => true, :restart => true
   action :enable
 end
 
-# Setup the hive config file.
+# Setup the hive configuration file.
 template "/etc/hive/conf/hive-site.xml" do
   owner node[:hive][:process_file_system_owner]
   group node[:hive][:global_file_system_group]
@@ -50,6 +52,7 @@ template "/etc/hive/conf/hive-site.xml" do
   notifies :restart, resources(:service => "hive-server")
 end
 
+# Start the hive server.
 service "hive-server" do
   action  :start
 end

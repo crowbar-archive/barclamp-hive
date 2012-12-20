@@ -15,6 +15,7 @@
             "debug":  { "type": "bool", "required": true},
             "admin_ip_eval": { "type": "str", "required": true },
             "admin_interface_eval": { "type": "str", "required": true },
+            "hive_metastore_mode":  { "type": "str", "required": true},
             "hive_default_fileformat": { "type": "str", "required": true},
             "hive_exec_compress_intermediate": { "type": "str", "required": true},
             "hive_exec_compress_output": { "type": "str", "required": true},
