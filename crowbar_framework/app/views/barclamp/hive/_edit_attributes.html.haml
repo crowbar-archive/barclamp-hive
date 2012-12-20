@@ -18,6 +18,10 @@
     %strong= t('.hive_settings')
 
     %p
+      %label{ :for => :hive_metastore_mode }= t('.hive_metastore_mode')
+      = select_tag :hive_metastore_mode, options_for_select([['Embedded Mode (Apache Derby)', 'embedded'],['Local Mode', 'local'],['Standalone Mode (Remote)', 'remote']], @proposal.raw_data['attributes'][@proposal.barclamp]["hive_metastore_mode"]), :onchange => "update_value('hive_metastore_mode', 'hive_metastore_mode', 'string')"
+
+    %p
       %label{ :for => :hive_default_fileformat }= t('.hive_default_fileformat')
       %input#hive_default_fileformat{:type => "text", :name => "hive_default_fileformat", :'data-default' => @proposal.raw_data['attributes'][@proposal.barclamp]["hive_default_fileformat"], :onchange => "update_value('hive_default_fileformat', 'hive_default_fileformat', 'string')"}
 

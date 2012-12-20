@@ -6,6 +6,7 @@
       "debug": false,
 	  "admin_ip_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").address",
       "admin_interface_eval": "Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, \"admin\").interface",
+      "hive_metastore_mode": "embedded",
       "hive_default_fileformat": "TextFile",
       "hive_exec_compress_intermediate": "false",
       "hive_exec_compress_output": "false",
