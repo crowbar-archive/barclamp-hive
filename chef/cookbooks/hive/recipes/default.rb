@@ -27,7 +27,6 @@ Chef::Log.info("BEGIN hive") if debug
 hive_packages=%w{
   hive
   hive-metastore
-  hive-server
   hive-server2
 }
 
@@ -37,8 +36,27 @@ hive_packages.each do |pkg|
   end
 end
 
+if node[:hive][:hive_metastore_mode] == "embedded"
+  package "mysql-server" do
+    action :install
+  end
+  
+  cookbook_file "/usr/lib/hive/lib" do
+    source "mysql-connector-java-5.1.22-bin.jar"
+  end
+  
+  service "mysqld" do
+    supports :start => true, :stop => true, :status => true, :restart => true
+    action :enable
+  end
+  
+  service "mysqld" do
+    action  :start
+  end
+end
+
 # Define the hive server process.
-service "hive-server" do
+service "hive-server2" do
   supports :start => true, :stop => true, :status => true, :restart => true
   action :enable
 end
@@ -49,11 +67,11 @@ template "/etc/hive/conf/hive-site.xml" do
   group node[:hive][:global_file_system_group]
   mode "0644"
   source "hive-site.xml.erb"
-  notifies :restart, resources(:service => "hive-server")
+  notifies :restart, resources(:service => "hive-server2")
 end
 
 # Start the hive server.
-service "hive-server" do
+service "hive-server2" do
   action  :start
 end
 
