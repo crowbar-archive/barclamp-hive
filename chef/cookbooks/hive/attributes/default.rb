@@ -26,7 +26,3 @@ default[:hive][:config] = {}
 default[:hive][:config][:environment] = "hive-config-default"
 default[:hive][:debug] = true
 default[:hive][:hive_metastore_mode] = "embedded"
-
-# File system ownership settings.
-default[:hive][:process_file_system_owner] = "root"
-default[:hive][:global_file_system_group] = "hadoop"

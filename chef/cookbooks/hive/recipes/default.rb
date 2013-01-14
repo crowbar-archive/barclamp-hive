@@ -36,13 +36,16 @@ hive_packages.each do |pkg|
   end
 end
 
-if node[:hive][:hive_metastore_mode] == "embedded"
+if node[:hive][:hive_metastore_mode] == "local" || node[:hive][:hive_metastore_mode] == "remote"
   package "mysql-server" do
     action :install
   end
   
-  cookbook_file "/usr/lib/hive/lib" do
+  cookbook_file "/usr/lib/hive/lib/mysql-connector-java-5.1.22-bin.jar" do
     source "mysql-connector-java-5.1.22-bin.jar"
+    owner "root"
+    group "root"
+    mode "0644"
   end
   
   service "mysqld" do
@@ -63,10 +66,10 @@ end
 
 # Setup the hive configuration file.
 template "/etc/hive/conf/hive-site.xml" do
-  owner node[:hive][:process_file_system_owner]
-  group node[:hive][:global_file_system_group]
-  mode "0644"
   source "hive-site.xml.erb"
+  owner "root"
+  group "root"
+  mode "0644"
   notifies :restart, resources(:service => "hive-server2")
 end
 
