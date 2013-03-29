@@ -23,6 +23,9 @@
       "javax_jdo_option_ConnectionURL": "jdbc:derby:;databaseName=metastore_db;create=true"
     }
   },
+    "roles": {
+        "hive-interpreter": { "jig": "chef" }
+    },
   "deployment": {
     "hive": {
       "crowbar-revision": 0,
