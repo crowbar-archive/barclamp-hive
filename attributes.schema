@@ -1,0 +1,30 @@
+{
+    "type": "map",
+    "required": true,
+    "mapping": {
+        "hive": {
+            "type": "map",
+            "required": true,
+            "mapping": {
+                "debug":  { "type": "bool", "required": true},
+                "admin_ip_eval": { "type": "str", "required": true },
+                "admin_interface_eval": { "type": "str", "required": true },
+                "hive_default_fileformat": { "type": "str", "required": true},
+                "hive_exec_compress_intermediate": { "type": "str", "required": true},
+                "hive_exec_compress_output": { "type": "str", "required": true},
+                "hive_exec_scratchdir": { "type": "str", "required": true},
+                "hive_exec_script_maxerrsize": { "type": "str", "required": true},
+                "hive_join_emit_interval": { "type": "str", "required": true},
+                "hive_map_aggr": { "type": "str", "required": true},
+                "hive_metastore_connect_retries": { "type": "str", "required": true},
+                "hive_metastore_local": { "type": "str", "required": true},
+                "hive_metastore_metadb_dir": { "type": "str", "required": true},
+                "hive_metastore_rawstore_impl": { "type": "str", "required": true},
+                "hive_metastore_uris": { "type": "str", "required": true},
+                "hive_metastore_warehouse_dir": { "type": "str", "required": true},
+                "javax_jdo_option_ConnectionDriverName": { "type": "str", "required": true},
+                "javax_jdo_option_ConnectionURL": { "type": "str", "required": true}
+            }
+        }
+    }
+}
