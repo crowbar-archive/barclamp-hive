@@ -35,7 +35,6 @@ locale_additions:
     barclamp:
       hive:
         edit_attributes:
-          attributes: Attributes
           barclamp_settings: Barclamp
           debug: Log Debug Messages
           hive_settings: Hive
@@ -55,5 +54,3 @@ locale_additions:
           hive_metastore_warehouse_dir: Metastore Warehouse Directory
           javax_jdo_option_ConnectionDriverName: Javax JDO Option Connection Driver Name
           javax_jdo_option_ConnectionURL: Javax JDO Option Connection URL
-        edit_deployment: 
-          deployment: Deployment
