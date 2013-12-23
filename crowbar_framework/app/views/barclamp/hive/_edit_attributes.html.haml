@@ -1,83 +1,29 @@
+- register_javascripts "barclamps/glance/form"
 
-%input#proposal_attributes{:type => "hidden", :name => "proposal_attributes", :value => @proposal.raw_data['attributes'][@proposal.barclamp].to_json}
-%p
-  %label{:for => "proposal_attributes"}= t('.attributes')
-  = link_to "Raw", proposal_barclamp_path(:id => @proposal.name, :controller => @proposal.barclamp, :dep_raw => @dep_raw, :attr_raw => true), :style => "float: right;"
-  %div.container
- 
-    %p
-    %br
-    %strong= t('.barclamp_settings')
+= attributes_for @proposal do
+  .panel-sub
+    = header @dep_raw, true
 
-    %p
-      %label{ :for => :debug }= t('.debug')
-      = select_tag :debug, options_for_select([['false', false],['true', true]], @proposal.raw_data['attributes'][@proposal.barclamp]["debug"]), :onchange => "update_value('debug', 'debug', 'boolean')"
+  .panel-body
+    = boolean_field :debug
 
-    %p
-    %br
-    %strong= t('.hive_settings')
+    %fieldset
+      %legend
+        = t(".hive_settings")
 
-    %p
-      %label{ :for => :hive_metastore_mode }= t('.hive_metastore_mode')
-      = select_tag :hive_metastore_mode, options_for_select([['Embedded Mode (Apache Derby)', 'embedded'],['Local Mode', 'local'],['Standalone Mode (Remote)', 'remote']], @proposal.raw_data['attributes'][@proposal.barclamp]["hive_metastore_mode"]), :onchange => "update_value('hive_metastore_mode', 'hive_metastore_mode', 'string')"
-
-    %p
-      %label{ :for => :hive_default_fileformat }= t('.hive_default_fileformat')
-      %input#hive_default_fileformat{:type => "text", :name => "hive_default_fileformat", :'data-default' => @proposal.raw_data['attributes'][@proposal.barclamp]["hive_default_fileformat"], :onchange => "update_value('hive_default_fileformat', 'hive_default_fileformat', 'string')"}
-
-    %p
-      %label{ :for => :hive_exec_compress_intermediate }= t('.hive_exec_compress_intermediate')
-      = select_tag :hive_exec_compress_intermediate, options_for_select([["true","true"], ["false", "false"]], @proposal.raw_data['attributes'][@proposal.barclamp]["hive_exec_compress_intermediate"]), :onchange => "update_value('hive_exec_compress_intermediate', 'hive_exec_compress_intermediate', 'string')"
-
-    %p
-      %label{ :for => :hive_exec_compress_output }= t('.hive_exec_compress_output')
-      = select_tag :hive_exec_compress_output, options_for_select([["true","true"], ["false", "false"]], @proposal.raw_data['attributes'][@proposal.barclamp]["hive_exec_compress_output"]), :onchange => "update_value('hive_exec_compress_output', 'hive_exec_compress_output', 'string')"
-
-    %p
-      %label{ :for => :hive_exec_scratchdir }= t('.hive_exec_scratchdir')
-      %input#hive_exec_scratchdir{:type => "text", :name => "hive_exec_scratchdir", :'data-default' => @proposal.raw_data['attributes'][@proposal.barclamp]["hive_exec_scratchdir"], :onchange => "update_value('hive_exec_scratchdir', 'hive_exec_scratchdir', 'string')"}
-
-    %p
-      %label{ :for => :hive_exec_script_maxerrsize }= t('.hive_exec_script_maxerrsize')
-      %input#hive_exec_script_maxerrsize{:type => "text", :name => "hive_exec_script_maxerrsize", :'data-default' => @proposal.raw_data['attributes'][@proposal.barclamp]["hive_exec_script_maxerrsize"], :onchange => "update_value('hive_exec_script_maxerrsize', 'hive_exec_script_maxerrsize', 'string')"}
-
-    %p
-      %label{ :for => :hive_join_emit_interval }= t('.hive_join_emit_interval')
-      %input#hive_join_emit_interval{:type => "text", :name => "hive_join_emit_interval", :'data-default' => @proposal.raw_data['attributes'][@proposal.barclamp]["hive_join_emit_interval"], :onchange => "update_value('hive_join_emit_interval', 'hive_join_emit_interval', 'string')"}
-
-    %p
-      %label{ :for => :hive_map_aggr }= t('.hive_map_aggr')
-      = select_tag :hive_map_aggr, options_for_select([["true","true"], ["false", "false"]], @proposal.raw_data['attributes'][@proposal.barclamp]["hive_map_aggr"]), :onchange => "update_value('hive_map_aggr', 'hive_map_aggr', 'string')"
-
-    %p
-      %label{ :for => :hive_metastore_connect_retries }= t('.hive_metastore_connect_retries')
-      %input#hive_metastore_connect_retries{:type => "text", :name => "hive_metastore_connect_retries", :'data-default' => @proposal.raw_data['attributes'][@proposal.barclamp]["hive_metastore_connect_retries"], :onchange => "update_value('hive_metastore_connect_retries', 'hive_metastore_connect_retries', 'string')"}
-
-    %p
-      %label{ :for => :hive_metastore_local }= t('.hive_metastore_local')
-      = select_tag :hive_metastore_local, options_for_select([["true","true"], ["false", "false"]], @proposal.raw_data['attributes'][@proposal.barclamp]["hive_metastore_local"]), :onchange => "update_value('hive_metastore_local', 'hive_metastore_local', 'string')"
-
-    %p
-      %label{ :for => :hive_metastore_metadb_dir }= t('.hive_metastore_metadb_dir')
-      %input#hive_metastore_metadb_dir{:type => "text", :name => "hive_metastore_metadb_dir", :'data-default' => @proposal.raw_data['attributes'][@proposal.barclamp]["hive_metastore_metadb_dir"], :onchange => "update_value('hive_metastore_metadb_dir', 'hive_metastore_metadb_dir', 'string')"}
-
-    %p
-      %label{ :for => :hive_metastore_rawstore_impl }= t('.hive_metastore_rawstore_impl')
-      %input#hive_metastore_rawstore_impl{:type => "text", :name => "hive_metastore_rawstore_impl", :'data-default' => @proposal.raw_data['attributes'][@proposal.barclamp]["hive_metastore_rawstore_impl"], :onchange => "update_value('hive_metastore_rawstore_impl', 'hive_metastore_rawstore_impl', 'string')"}
-
-    %p
-      %label{ :for => :hive_metastore_uris }= t('.hive_metastore_uris')
-      %input#hive_metastore_uris{:type => "text", :name => "hive_metastore_uris", :'data-default' => @proposal.raw_data['attributes'][@proposal.barclamp]["hive_metastore_uris"], :onchange => "update_value('hive_metastore_uris', 'hive_metastore_uris', 'string')"}
-
-    %p
-      %label{ :for => :hive_metastore_warehouse_dir }= t('.hive_metastore_warehouse_dir')
-      %input#hive_metastore_warehouse_dir{:type => "text", :name => "hive_metastore_warehouse_dir", :'data-default' => @proposal.raw_data['attributes'][@proposal.barclamp]["hive_metastore_warehouse_dir"], :onchange => "update_value('hive_metastore_warehouse_dir', 'hive_metastore_warehouse_dir', 'string')"}
-
-    %p
-      %label{ :for => :javax_jdo_option_ConnectionDriverName }= t('.javax_jdo_option_ConnectionDriverName')
-      %input#javax_jdo_option_ConnectionDriverName{:type => "text", :name => "javax_jdo_option_ConnectionDriverName", :'data-default' => @proposal.raw_data['attributes'][@proposal.barclamp]["javax_jdo_option_ConnectionDriverName"], :onchange => "update_value('javax_jdo_option_ConnectionDriverName', 'javax_jdo_option_ConnectionDriverName', 'string')"}
-
-    %p
-      %label{ :for => :javax_jdo_option_ConnectionURL }= t('.javax_jdo_option_ConnectionURL')
-      %input#javax_jdo_option_ConnectionURL{:type => "text", :name => "javax_jdo_option_ConnectionURL", :'data-default' => @proposal.raw_data['attributes'][@proposal.barclamp]["javax_jdo_option_ConnectionURL"], :onchange => "update_value('javax_jdo_option_ConnectionURL', 'javax_jdo_option_ConnectionURL', 'string')"}
-  
+      = select_field :hive_metastore_mode, :collection => :metastore_modes_for_hive
+      = string_field :hive_default_fileformat
+      = boolean_field :hive_exec_compress_intermediate
+      = boolean_field :hive_exec_compress_output
+      = string_field :hive_exec_scratchdir
+      = string_field :hive_exec_script_maxerrsize
+      = string_field :hive_join_emit_interval
+      = boolean_field :hive_map_aggr
+      = string_field :hive_metastore_connect_retries
+      = boolean_field :hive_metastore_local
+      = string_field :hive_metastore_metadb_dir
+      = string_field :hive_metastore_rawstore_impl
+      = string_field :hive_metastore_uris
+      = string_field :hive_metastore_warehouse_dir
+      = string_field :javax_jdo_option_ConnectionDriverName
+      = string_field :javax_jdo_option_ConnectionURL
