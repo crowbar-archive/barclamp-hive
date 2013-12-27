@@ -1,0 +1,23 @@
+en:
+  barclamp:
+    hive:
+      edit_attributes:
+        barclamp_settings: Barclamp
+        debug: Log Debug Messages
+        hive_settings: Hive
+        hive_metastore_mode: Metastore Deployment
+        hive_default_fileformat: Default File Format
+        hive_exec_compress_intermediate: Execution Compress Intermediate
+        hive_exec_compress_output: Execution Compress Output
+        hive_exec_scratchdir: Execution Scratch Directory
+        hive_exec_script_maxerrsize: Execute Script Max Error Size
+        hive_join_emit_interval: Join Emit Interval
+        hive_map_aggr: Map Aggregation
+        hive_metastore_connect_retries: Metastore Connect Retries
+        hive_metastore_local: Metastore Local
+        hive_metastore_metadb_dir: Metastore Meta DB Directory
+        hive_metastore_rawstore_impl: Metastore Raw Store Implict
+        hive_metastore_uris: Metastore URIS
+        hive_metastore_warehouse_dir: Metastore Warehouse Directory
+        javax_jdo_option_ConnectionDriverName: Javax JDO Option Connection Driver Name
+        javax_jdo_option_ConnectionURL: Javax JDO Option Connection URL
