@@ -15,17 +15,31 @@
 # limitations under the License.
 #
 
-barclamp:
-  name: hive
-  display: hive
-  version: 0
-  requires:
-    - hadoop
-  member:
-    - apachehadoop
+require "simplecov"
 
-crowbar:
-  layout: 1
-  order: 400
-  run_order: 400
-  chef_order: 400
+if ENV["CODECLIMATE_REPO_TOKEN"]
+  require "coveralls"
+  require "codeclimate-test-reporter"
+
+  Coveralls.wear!
+  CodeClimate::TestReporter.start
+
+  SimpleCov.start do
+    add_filter "/spec"
+
+    formatter SimpleCov::Formatter::MultiFormatter[
+      SimpleCov::Formatter::HTMLFormatter,
+      CodeClimate::TestReporter::Formatter
+    ]
+  end
+else
+  SimpleCov.start do
+    add_filter "/spec"
+  end
+end
+
+require "rspec"
+
+RSpec.configure do |config|
+  config.mock_with :rspec
+end
