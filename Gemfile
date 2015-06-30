@@ -15,17 +15,21 @@
 # limitations under the License.
 #
 
-barclamp:
-  name: hive
-  display: hive
-  version: 0
-  requires:
-    - hadoop
-  member:
-    - apachehadoop
+source 'https://rubygems.org'
 
-crowbar:
-  layout: 1
-  order: 400
-  run_order: 400
-  chef_order: 400
+group :development do
+  gem 'closure-compiler', '~> 1.1.10'
+  gem 'sass', '~> 3.2.19'
+  gem 'sprockets-standalone', '~> 1.2.1'
+  gem 'sprockets', '~> 2.11.0'
+  gem 'rspec', '~> 3.1.0'
+end
+
+group :test do
+  gem 'simplecov', require: false
+
+  if ENV['CODECLIMATE_REPO_TOKEN']
+    gem 'coveralls', require: false
+    gem 'codeclimate-test-reporter', require: false
+  end
+end
